@@ -1,0 +1,111 @@
+/* ── Light palette (default) ────────────────────────────── */
+:root,
+:root[data-theme='light'] {
+  --bg: #f8f9fa;
+  --bg-card: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #6c757d;
+  --accent: #4361ee;
+  --accent-hover: #3a56d4;
+  --border: #dee2e6;
+  --slide-bg: #ffffff;
+  --slide-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --control-bg: rgba(0, 0, 0, 0.06);
+  --control-hover: rgba(0, 0, 0, 0.12);
+  --progress-track: #dee2e6;
+  --progress-fill: var(--accent);
+  --code-bg: #f1f3f5;
+}
+
+/* ── Dark palette ──────────────────────────────────────── */
+:root[data-theme='dark'] {
+  --bg: #0f0f1a;
+  --bg-card: #1a1a2e;
+  --text: #e8e8f0;
+  --text-muted: #9a9ab0;
+  --accent: #6c8cff;
+  --accent-hover: #8da8ff;
+  --border: #2a2a40;
+  --slide-bg: #1a1a2e;
+  --slide-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --control-bg: rgba(255, 255, 255, 0.08);
+  --control-hover: rgba(255, 255, 255, 0.15);
+  --progress-track: #2a2a40;
+  --progress-fill: var(--accent);
+  --code-bg: #16162a;
+}
+
+/* ── Reset & base ──────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+code {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1em 1.25em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ── Theme toggle button ───────────────────────────────── */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--control-bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.theme-toggle:hover {
+  background: var(--control-hover);
+  transform: scale(1.1);
+}
