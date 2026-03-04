@@ -82,6 +82,10 @@ export default function SlideDeck({ slides }) {
           &#8594;
         </button>
 
+        <span className="slide-counter">
+          {current + 1} / {total}
+        </span>
+
         <button
           className="control-btn fullscreen-btn"
           onClick={toggleFullscreen}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { getAllDecks } from '../lib/loadDecks';
+import { parseDeck } from '../lib/parseMarkdownSlides';
 
 export default function Home() {
   const decks = getAllDecks();
@@ -18,14 +19,18 @@ export default function Home() {
         </p>
       ) : (
         <ul className="deck-grid">
-          {decks.map((deck) => (
-            <li key={deck.slug}>
-              <Link to={`/deck/${deck.slug}`} className="deck-card">
-                <h2>{deck.title}</h2>
-                {deck.description && <p>{deck.description}</p>}
-              </Link>
-            </li>
-          ))}
+          {decks.map((deck) => {
+            const { slides } = parseDeck(deck.raw);
+            return (
+              <li key={deck.slug}>
+                <Link to={`/deck/${deck.slug}`} className="deck-card">
+                  <h2>{deck.title}</h2>
+                  {deck.description && <p>{deck.description}</p>}
+                  <span className="deck-slide-count">{slides.length} slides</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
