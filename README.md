@@ -58,6 +58,34 @@ npm run build
 
 Static output is written to `dist/` and can be deployed to any static host (GitHub Pages, Netlify, Vercel, etc.).
 
+## Firebase Deploy
+
+1. Install Firebase CLI and log in:
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase use --add
+```
+
+2. Deploy manually:
+
+```bash
+npm run firebase:deploy
+```
+
+This project includes `firebase.json` configured to serve the Vite `dist/` output and rewrite routes to `index.html`.
+
+## CI/CD Pipeline (GitHub Actions)
+
+The workflow at `.github/workflows/ci-cd.yml` runs:
+- Build checks on every pull request
+- Automatic Firebase Hosting deploy on push to `master`
+
+Add these GitHub repository secrets before enabling deploys:
+- `FIREBASE_PROJECT_ID`: your Firebase project ID
+- `FIREBASE_TOKEN`: generated from `firebase login:ci`
+
 ## Project Structure
 
 ```
